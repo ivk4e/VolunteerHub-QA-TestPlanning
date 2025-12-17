@@ -180,7 +180,7 @@ VolunteerHub е предназначен за територията на **Ре
 ---
 
 ### Таб: Регистрация (Доброволец)
-(Screenshots\Authentication\register-volunteer.jpg)
+![Регистрация на доброволец](Screenshots/Authentication/register-volunteer.jpg)
 Полета:
 - Име*
 - Фамилия*
