@@ -1,503 +1,495 @@
 # VolunteerHub Documentation
 
-## Проект: VolunteerHub
+## Project: VolunteerHub
 
-## Съдържание
+## Table of Contents
 
-1. [Цел на системата](#1-цел-на-системата)
-2. [Географски обхват](#2-географски-обхват)
-3. [Потребителски роли](#3-потребителски-роли)
-   - [Доброволец](#31-доброволец-обикновен-потребител)
-   - [Организация](#32-организация)
-4. [Модули на системата](#4-модули-на-системата)
-   - [Аутентикация](#41-модул-аутентикация-authentication)
-     - [Вход в системата](#411-екран-вход-в-системата-home-страница)
-   - [Инициативи](#42-модул-инициативи)
-     - [Всички инициативи](#421-екран-всички-инициативи)
-     - [Детайли за инициатива](#422-екран-детайли-за-инициатива)
-     - [Наши инициативи](#423-екран-наши-инициативи)
-     - [Създай инициатива](#424-екран-създай-инициатива)
-     - [Редактирай инициатива](#425-екран-редактирай-инициатива)
-   - [Групи](#43-модул-групи)
-     - [Групов фийд](#431-групов-фийд-стена)
-     - [Групов чат](#432-групов-чат)
-   - [Организации](#44-модул-организации)
-   - [Профил на потребител](#45-модул-профил-на-потребител)
-   - [Известия](#46-модул-известия-notifications)
-
----
-
-> **Бележка:** Всички скрийншоти в тази документация са **илюстративни** и са създадени с помощта на **Bootstrap Studio**.
-
-## 1. Цел на системата
-**VolunteerHub** е платформа, която предоставя възможност на различни организации да публикуват доброволчески инициативи, а на потребителите (доброволци) – да ги преглеждат и да участват в тях.
-Системата улеснява комуникацията между доброволци и организатори чрез специализирани групи за всяка инициатива, където се публикуват съобщения, информация за събитието и актуализации.
+1. [System Purpose](#1-system-purpose)
+2. [Geographical Scope](#2-geographical-scope)
+3. [User Roles](#3-user-roles)
+   - [Volunteer](#31-volunteer-regular-user)
+   - [Organization](#32-organization)
+4. [System Modules](#4-system-modules)
+   - [Authentication](#41-module-authentication)
+     - [Login](#411-screen-login-home-page)
+   - [Initiatives](#42-module-initiatives)
+     - [All Initiatives](#421-screen-all-initiatives)
+     - [Initiative Details](#422-screen-initiative-details)
+     - [Our Initiatives](#423-screen-our-initiatives)
+     - [Create Initiative](#424-screen-create-initiative)
+     - [Edit Initiative](#425-screen-edit-initiative)
+   - [Groups](#43-module-groups)
+     - [Group Feed](#431-group-feed-wall)
+     - [Group Chat](#432-group-chat)
+   - [Organizations](#44-module-organizations)
+   - [User Profile](#45-module-user-profile)
+   - [Notifications](#46-module-notifications)
 
 ---
 
-## 2. Географски обхват
-VolunteerHub е предназначен за територията на **Република България**. Всички функционалности, полета за локация и валидации са съобразени с това ограничение.
+> **Note:** All screenshots in this documentation are **illustrative** and were created using **Bootstrap Studio**.
 
-### Обхватът включва:
-
-- **Инициативи:** могат да се създават само с локация в България (град/населено място)
-- **Списък с населени места:** dropdown менюта, които съдържат само български населени места
-- **Регистрация на организации:** изисква:
-  - български регистрационен номер (ЕИК/Булстат)
-  - служебен имейл
-  - адрес в България
-- **Телефонни номера:** формат `+359XXXXXXXXX`
-- **Интерфейс:** български
-  - локализации на други езици не се предвиждат за първа версия
-
-### Бележки за интеграция по модули:
-
-- **Authentication/Registration (Organizations)**
-  - Валидация на ЕИК/Булстат
-  - Валидация на адрес
-  - Валидация на телефонен номер
-
-- **Initiatives/Create Initiative**
-  - Избор на населено място само в рамките на България
-
-- **Initiatives/List & Filters**
-  - Филтри по локация показват само български населени места
+## 1. System Purpose
+**VolunteerHub** is a platform that enables different organizations to publish volunteer initiatives, while users (volunteers) can browse and participate in them.  
+The system facilitates communication between volunteers and organizers through specialized groups for each initiative, where messages, event information, and updates are published.
 
 ---
 
-## 3. Потребителски роли
+## 2. Geographical Scope
+VolunteerHub is designed for the territory of **the Republic of Bulgaria**. All functionalities, location fields, and validations are aligned with this limitation.
 
-### 3.1 Доброволец (обикновен потребител)
+### Scope includes:
 
-**Описание на ролята:**  
-Доброволецът е обикновен потребител, който разглежда инициативи и може да участва в тях. Той няма административни права.
+- **Initiatives:** can only be created with a location in Bulgaria (city/town)  
+- **List of settlements:** dropdown menus containing only Bulgarian settlements  
+- **Organization registration:** requires:  
+  - Bulgarian registration number (EIK/Bulstat)  
+  - Official email  
+  - Address in Bulgaria  
+- **Phone numbers:** format `+359XXXXXXXXX`  
+- **Interface:** Bulgarian  
+  - Localization to other languages is not planned for the first version
 
-**Основни възможности на доброволеца:**
+### Module-specific integration notes:
 
-1. **Преглеждане на инициативи**  
-   - Доброволецът може да вижда списък с всички активни инициативи, публикувани от различни организации.
+- **Authentication/Registration (Organizations)**  
+  - EIK/Bulstat validation  
+  - Address validation  
+  - Phone number validation  
 
-2. **Филтриране на инициативи**  
-   - Статус (Предстояща, В процес, Минали - не се показват)  
-   - Дата от
-   - Дата до  
-   - Категория (екология, социални дейности, образование и др.)  
-   - Етикети  
-   - Град
+- **Initiatives/Create Initiative**  
+  - Settlement selection only within Bulgaria  
 
-3. **Преглед на детайлите на инициатива**  
-   - Описание (подробно описание)  
-   - Дата от
-   - Дата до  
-   - Час  
-   - Град
-   - Местоположение  
-   - Участници  
-   - Категория  
-   - Контакт за връзка  
-   - Етикети  
-   - Прикачени файлове
-
-4. **Записване за инициатива**  
-   - Чрез бутон „Запиши се“ потребителят потвърждава участие.
-
-**След записване:**  
-- Доброволецът автоматично се добавя към групата на инициативата.  
-- Като част от групата може да:  
-  - Получава известия за нова активност  
-  - Публикува публикации след одобрение от администратор/модератор
-  - Преглежда публикации от администратори/модератори  
-  - Участва в групов чат
-
-**Какво НЕ може да прави:**  
-- Не може да редактира чужди публикации (освен собствените си)  
-- Не може да трие чужди публикации (освен собствените си)  
-- Не може да трие инициативата
+- **Initiatives/List & Filters**  
+  - Location filters show only Bulgarian settlements  
 
 ---
 
-### 3.2 Организация
+## 3. User Roles
 
-**Описание на ролята:**  
-Организацията е юридическо лице или организаторска група, която може да създава и управлява инициативи. След регистрация организацията може да има множество членове, разделени на роли.
+### 3.1 Volunteer (regular user)
 
-**Роли в рамките на организацията:**
+**Role description:**  
+A volunteer is a regular user who browses initiatives and can participate in them. They do not have administrative rights.
 
-#### Администратор
-- Създава инициативата (групата се създава автоматично с нея)  
-- Пълни права:  
-  - Публикуване и редакция на постове  
-  - Изтриване на постове  
-  - Управление на доброволците, записани за инициативата  
-  - Изтриване на инициативата
-  - Промяна на ролите на членовете на организацията (напр. модератор → администратор)
+**Main capabilities of a volunteer:**
 
-#### Модератор
-- Поддържа активността в групата  
-- Може да:  
-  - Публикува постове  
-  - Редактира публикации, които е публикувал  
-  - Следи и изтрива неподходящо съдържание 
-- Не може да променя роли на други потребители  
-- Не може да изтрива инициативата
+1. **Browsing initiatives**  
+   - Volunteers can see a list of all active initiatives published by various organizations.  
 
-#### Член
-- Може да публикува и изтрива собствени постове в инициативата  
-- Може да харесва и коментира публикации  
-- Може да участва в груповия чат  
-- Не може да редактира или изтрива чужди публикации  
-- Не може да променя роли на други потребители  
-- Не може да изтрива инициативата
+2. **Filtering initiatives**  
+   - Status (Upcoming, Ongoing, Past – not shown)  
+   - Date from  
+   - Date to  
+   - Category (ecology, social activities, education, etc.)  
+   - Tags  
+   - City  
 
-**Специален случай: потребител с повече от една роля**  
-- Един потребител може да притежава повече от една роля (напр. доброволец и член на организация)  
-- Активната роля зависи от начина на влизане в системата (напр. дали сме дали отметка „Влизам като организация“ при формата за влизане)
+3. **Viewing initiative details**  
+   - Description (detailed description)  
+   - Date from  
+   - Date to  
+   - Time  
+   - City  
+   - Location  
+   - Participants  
+   - Category  
+   - Contact  
+   - Tags  
+   - Attached files  
 
-**Ограничение:**  
-- Потребител, който е член на дадена организация, **не може** да се записва като доброволец за инициативи, създадени от същата организация  
-- Може да се записва като доброволец само за инициативи, създадени от други организации
+4. **Signing up for an initiative**  
+   - By clicking the "Sign Up" button, the user confirms participation.  
 
----
+**After signing up:**  
+- The volunteer is automatically added to the initiative's group.  
+- As part of the group, they can:  
+  - Receive notifications for new activity  
+  - Publish posts after approval from administrator/moderator  
+  - View posts from administrators/moderators  
+  - Participate in the group chat  
 
-## 4. Модули на системата
-
-Платформата VolunteerHub се състои от няколко основни модула, всеки от които отговаря за конкретна част от функционалността. Всеки модул включва един или няколко екрана (страници).
-
----
-
-## 4.1 Модул: Аутентикация (Authentication)
-
-### 4.1.1 Екран: Вход в системата (Home страница)
-
-Началната страница съдържа форма за аутентикация, организирана в три таба:
-- **Вход**
-- **Регистрация (Доброволец)**
-- **Регистрация (Организация)**
-
-**Навигация:**  
-На Home страницата няма допълнителна навигация. Потребителят може да премине само към:
-- Таб Вход / Регистрация
-- „Забравена парола“ (от таб Вход)
+**What they CANNOT do:**  
+- Cannot edit others' posts (except their own)  
+- Cannot delete others' posts (except their own)  
+- Cannot delete the initiative  
 
 ---
 
-### Таб: Регистрация (Доброволец)
-![Регистрация на доброволец](Screenshots/Authentication/register-volunteer.jpg)
-Полета:
-- Име*
-- Фамилия*
-- Имейл*
-- Телефон
-- Парола*
-- Потвърждение на парола*
+### 3.2 Organization
+
+**Role description:**  
+An organization is a legal entity or an organizer group that can create and manage initiatives. After registration, the organization may have multiple members, divided into roles.
+
+**Roles within an organization:**
+
+#### Administrator
+- Creates the initiative (the group is automatically created with it)  
+- Full rights:  
+  - Publish and edit posts  
+  - Delete posts  
+  - Manage volunteers signed up for the initiative  
+  - Delete the initiative  
+  - Change the roles of organization members (e.g., moderator → administrator)  
+
+#### Moderator
+- Maintains activity in the group  
+- Can:  
+  - Publish posts  
+  - Edit posts they have published  
+  - Monitor and delete inappropriate content  
+- Cannot change roles of other users  
+- Cannot delete the initiative  
+
+#### Member
+- Can publish and delete own posts in the initiative  
+- Can like and comment on posts  
+- Can participate in the group chat  
+- Cannot edit or delete others' posts  
+- Cannot change roles of other users  
+- Cannot delete the initiative  
+
+**Special case: user with multiple roles**  
+- A user may have more than one role (e.g., volunteer and member of an organization)  
+- Active role depends on login method (e.g., if "Log in as organization" checkbox is checked on login form)  
+
+**Restriction:**  
+- A user who is a member of an organization **cannot** sign up as a volunteer for initiatives created by the same organization  
+- Can only sign up as a volunteer for initiatives created by other organizations  
 
 ---
 
-### Таб: Регистрация (Организация)
-![Регистрация на организация](Screenshots/Authentication/register-organization.jpg)
-Регистрацията на организация изисква повече данни, тъй като тя функционира като „бизнес профил“.
+## 4. System Modules
 
-**Задължителни данни:**
-- Име на организацията*
-- Имейл за контакт*
-- Парола* + потвърждение*
-- ЕИК* / Булстат
-- Тип организация*:
-  - НПО
-  - Училище
-  - Частна компания
-  - Общинска структура
-  - Друго
-- Локация / Адрес*
-- Официален телефон за контакт*
-
-**Лице за контакт (администратор):**
-- Име*
-- Фамилия*
-- Телефон*
-
-**Допълнителни полета:**
-- Кратко описание на организацията (mission/vision)
-
-**Допълнителни полета, достъпни в настройките на организацията:**
-- Уебсайт
-- Лого (upload)
-- Социални мрежи
-
-**Специални сценарии:**
-- При регистрация на организация системата проверява дали имейлът на лицето за контакт вече съществува като потребител.
-- Ако имейлът съществува:
-  - към съществуващия потребител се добавя роля **Администратор** за новата организация.
-- Ако имейлът не съществува:
-  - системата автоматично създава нов потребителски профил;
-  - профилът получава:
-    - базова роля **Доброволец**;
-    - роля **Администратор** за регистрираната организация.
-- Така всяка организация винаги има поне един администратор.
+VolunteerHub consists of several main modules, each responsible for a specific part of the functionality. Each module includes one or more screens (pages).
 
 ---
 
-### Таб: Вход
-![Вход](Screenshots/Authentication/login.jpg)
-Потребителят може да влезе като:
-- Доброволец
-- Организация
+## 4.1 Module: Authentication
 
-Използва се чекбокс:  
-☐ „Влизам като организация“
+### 4.1.1 Screen: Login (Home Page)
 
-Когато е маркиран, системата извършва проверка в таблицата за организации и роли на потребителите.
+The home page contains an authentication form, organized in three tabs:  
+- **Login**  
+- **Register (Volunteer)**  
+- **Register (Organization)**  
 
-**Полета за вход:**
-- Имейл*
-- Парола*
-
-**Допълнителни функции:**
-- „Забравена парола“ → изпращане на имейл за възстановяване
-- Покажи / скрий парола
-
-**Специални сценарии:**
-- Доброволец може да бъде добавен към организация чрез имейл и да получи нова роля
-- Доброволец може да създаде собствена организация и да получи роля администратор
-- Член/модератор/администратор може да влиза като доброволец, без отметката „Влизам като организация“
+**Navigation:**  
+The home page has no additional navigation. Users can only navigate to:  
+- Login/Register tabs  
+- "Forgot password" (from Login tab)  
 
 ---
 
-## 4.2 Модул: Инициативи
-
-Модулът позволява:
-- На доброволците – да разглеждат и участват в инициативи
-- На организациите – да създават, редактират и управляват инициативи
-
-### Навигация
-
-**Доброволец:**
-- Инициативи
-  - Мои инициативи
-  - Всички инициативи
-
-**Организация:**
-- Инициативи
-  - Наши инициативи
-  - Създай инициатива
+### Tab: Register (Volunteer)
+![Volunteer Registration](Screenshots/Authentication/register-volunteer.jpg)  
+Fields:  
+- First Name*  
+- Last Name*  
+- Email*  
+- Phone  
+- Password*  
+- Confirm Password*  
 
 ---
 
-### 4.2.1 Екран: Всички инициативи
-![Всички инициативи](Screenshots/Initiatives/all-initiatives.jpg)
+### Tab: Register (Organization)
+![Organization Registration](Screenshots/Authentication/register-organization.jpg)  
+Organization registration requires more information, as it functions as a “business profile.”
 
-Достъпно за: доброволци и организации
+**Required fields:**  
+- Organization Name*  
+- Contact Email*  
+- Password* + Confirm*  
+- EIK* / Bulstat  
+- Organization Type*:  
+  - NGO  
+  - School  
+  - Private Company  
+  - Municipal Structure  
+  - Other  
+- Location / Address*  
+- Official Contact Phone*  
 
-**Функционалност:**
-- Списък с всички активни инициативи
-- Филтри: Статус, Дата от, Дата до, Категория, Етикети, Град
-- Бутон „Виж детайли“
+**Contact person (administrator):**  
+- First Name*  
+- Last Name*  
+- Phone*  
 
----
+**Additional fields:**  
+- Short description of the organization (mission/vision)  
 
-### 4.2.2 Модален прозорец: Детайли за инициатива
-![Модален прозорец](Screenshots/Modals/details-initiative.jpg)
-Показва:
-- Заглавие
-- Описание
-- Дата от
-- Дата до
-- Час
-- Град
-- Местоположение
-- Участници
-- Категория
-- Контакт за връзка
-- Етикети
-- Прикачени файлове
+**Additional fields available in organization settings:**  
+- Website  
+- Logo (upload)  
+- Social networks  
 
-**Действия според роля:**
-
-- **Доброволец**
-  - Бутон „Запиши се“
-  - При записване: бутон „Група“ + индикатор „Записан“
-
-- **Организация**
-  - Само преглед
-  - Управление се извършва от „Наши инициативи“
-
----
-
-### 4.2.3 Екран: Наши инициативи
-![Наши инициативи](Screenshots/Initiatives/Organization/our-initiatives.jpg)
-Достъпно за: организации
-
-Съдържа:
-- Статус
-- Дата от
-- Град
-- Име
-- Кратко описание
-
-**Бутони върху всяка инициатива:**
-
-![Бутони върху инициатива](Screenshots/Initiatives/Organization/our-initiatives-card.jpg)
-
-- Група
-- Детайли (при натискане се показва модал с повече информация и възможност за отмяна на инициативата ако ролята на логнатия потребител е администратор)
-![Детайли наша инициатива](Screenshots/Initiatives/Organization/our-initiatives-details-modal.jpg)
-- [Редактирай](#425-екран-редактирай-инициатива) (води към екран за редактиране на инициатива)
-- Участници (при натискане се показва модал, който показва участниците, които са се записали)
-![Участници инициатива](Screenshots/Initiatives/Organization/our-initiatives-participant-modal.jpg)
+**Special scenarios:**  
+- During organization registration, the system checks if the contact email already exists as a user.  
+- If the email exists:  
+  - The existing user is assigned **Administrator** role for the new organization.  
+- If the email does not exist:  
+  - The system automatically creates a new user profile;  
+  - The profile receives:  
+    - Base role **Volunteer**;  
+    - **Administrator** role for the registered organization.  
+- Each organization always has at least one administrator.  
 
 ---
 
-### 4.2.4 Екран: Създай инициатива
-![Създай инициатива](Screenshots/Initiatives/Organization/create-initiative.jpg)
+### Tab: Login
+![Login](Screenshots/Authentication/login.jpg)  
+Users can log in as:  
+- Volunteer  
+- Organization  
 
-**Полета:**
-- Заглавие
-- Описание
-- Дата от
-- Дата до
-- Час
-- Град
-- Местоположение
-- Категория
-- Етикети
-- Максимален брой участници (по избор)
-- Контакт за връзка
-- Прикачени файлове
-- Настройки за модератори/админи - с възможност да се добавят ако ролята на логнатия потребител е администратор
+Checkbox:  
+☐ "Log in as organization"  
 
-**Бутони:**
-- Създай инициатива
-- Изчисти
-- Назад
+If checked, the system verifies in the organization roles table.
 
-**Валидации:**
-- Задължителни полета
-- Дата до ≥ дата от
+**Login fields:**  
+- Email*  
+- Password*  
+
+**Additional functions:**  
+- "Forgot password" → send recovery email  
+- Show/hide password  
+
+**Special scenarios:**  
+- Volunteer may be added to an organization via email and receive a new role  
+- Volunteer may create own organization and receive Administrator role  
+- Member/Moderator/Administrator can log in as Volunteer without checking "Log in as organization"  
 
 ---
 
-### 4.2.5 Екран: Редактирай инициатива
-![Редактирай инициатива](Screenshots/Initiatives/Organization/edit-initiative.jpg)
+## 4.2 Module: Initiatives
 
-Достъпно за: организации (само собствени инициативи)
+This module allows:  
+- Volunteers – to browse and participate in initiatives  
+- Organizations – to create, edit, and manage initiatives  
 
-**Бутони:**
-- Запази промените
-- Изтрий инициатива (само администратор)
-- Назад
+### Navigation
 
-При изтриване групата се архивира и остава достъпна само за четене.
+**Volunteer:**  
+- Initiatives  
+  - My Initiatives  
+  - All Initiatives  
 
----
-
-## 4.3 Модул: Групи
-
-Групите са основното място за комуникация. При създаване на инициатива автоматично се създава и прилежаща към нея група.
-
-### Права по роли:
-- **Администратор:** пълни права
-- **Модератор:** ограничени административни права
-- **Доброволец:** публикува след одобрение
+**Organization:**  
+- Initiatives  
+  - Our Initiatives  
+  - Create Initiative  
 
 ---
 
-### 4.3.1 Групов фийд (Стена)
-![Групов фийд](Screenshots/Groups/group-feed.jpg)
+### 4.2.1 Screen: All Initiatives
+![All Initiatives](Screenshots/Initiatives/all-initiatives.jpg)  
 
-Съдържа:
-- Публикации
-- Коментари
-- Харесвания
-- Прикачени файлове
+Accessible to: volunteers and organizations
 
----
-
-### 4.3.2 Групов чат
-
-Груповият чат осигурява бърза и директна комуникация между всички членове на дадена инициатива. Може да се достъпи през Sidebar на групата в малък вариант.
-![Чат в sidebar](Screenshots/Groups/chat-sidebar.jpg)
-
-
-Има възможност за уголемяване чрез появата на модален прозорец.
-![Чат модал](Screenshots/Groups/chat-big.jpg)
-
-
-#### Функционалности
-- Изпращане и получаване на текстови съобщения между всички участници в групата
-- Визуализиране на информация за изпращача към всяко съобщение:
-  - име на потребителя
-  - роля в рамките на инициативата (администратор/модератор/доброволец)
-- Показване на системни съобщения, автоматично генерирани от системата
-
-#### Системни съобщения – примери
-- „Ива Стоянова се присъедини към групата“
-- „Петър Иванов напусна инициативата“
-- „Инициативата беше архивирана“
-
-#### Права за достъп
-- Администратор:
-  - може да чете и изпраща съобщения в чата
-- Модератор:
-  - може да чете и изпраща съобщения в чата
-- Член:
-  - може да чете и изпраща съобщения в чата
-- Доброволец:
-  - може да чете и изпраща съобщения в чата
-
-#### Забележки
-- Ролята, която се визуализира към съобщението, е ролята на потребителя в рамките на конкретната инициатива
-- В първа версия не се поддържат:
-  - редакция на чат съобщения
-  - изтриване на чат съобщения
-  - прикачване на файлове в чата
----
-
-## 4.4 Модул: Организации
-![Профил на организация](Screenshots/Profile/Organization/our-profile.jpg)
-
-### Екран: Профил на организация
-
-Задължително трябва да съдържа информация за:
-- Името на организацията
-- Лого
-- Описание
-- Активни инициативи
-- Екип
-
-**Бутони:**
-- [Добави инициатива](#424-екран-създай-инициатива)
-- Покани член (отваря се модален прозорец, в който въвеждаме имейл на новия член, който искаме да добавим - трябва да имаме администраторска роля)
-- Генерирай отчет (справка за участници и активност на инициативите)
-- Изтрий организация (само за администраторска роля)
+**Functionality:**  
+- List of all active initiatives  
+- Filters: Status, Date from, Date to, Category, Tags, City  
+- Button "View Details"  
 
 ---
 
-## 4.5 Модул: Профил на потребител
-![Профил на потребител](Screenshots/Profile/Volunteer/my-profile.jpg)
+### 4.2.2 Modal: Initiative Details
+![Initiative Details Modal](Screenshots/Modals/details-initiative.jpg)  
+Shows:  
+- Title, description  
+- Date from  
+- Date to  
+- Time  
+- City  
+- Location  
+- Participants  
+- Category  
+- Contact  
+- Tags  
+- Attached files  
 
-### Екран: Моят профил
+**Actions by role:**  
 
-- Име
-- Имейл
-- Смяна на парола
-- Записани инициативи
-- Групи
+- **Volunteer**  
+  - Button "Sign Up"  
+  - After signing up: "Group" button + "Signed Up" indicator  
+
+- **Organization**  
+  - View only  
+  - Management is done from "Our Initiatives"  
 
 ---
 
-## 4.6 Модул: Известия (Notifications)
-![Известия](Screenshots/notifications.jpg)
+### 4.2.3 Screen: Our Initiatives
+![Our Initiatives](Screenshots/Initiatives/Organization/our-initiatives.jpg)  
 
-### Камбанка
-- Badge с брой непрочетени известия
-- Dropdown с последните известия
+Accessible to: organizations
 
-### Примери:
-- „Нова публикация в група“
-- „Ново съобщение в чат“
-- „Успешно записване за инициатива“
-- „Напомняне за предстояща инициатива“
+Includes:  
+- Status  
+- Date from  
+- City  
+- Name  
+- Short description  
+
+**Buttons on each initiative:**  
+![Initiative Buttons](Screenshots/Initiatives/Organization/our-initiatives-card.jpg)  
+
+- Group  
+- Details (opens modal with more information and option to cancel initiative if user is admin)  
+![Our Initiative Details Modal](Screenshots/Initiatives/Organization/our-initiatives-details-modal.jpg)  
+- [Edit](#425-screen-edit-initiative) (leads to initiative edit screen)  
+- Participants (opens modal showing signed-up participants)  
+![Participants Modal](Screenshots/Initiatives/Organization/our-initiatives-participant-modal.jpg)  
 
 ---
 
+### 4.2.4 Screen: Create Initiative
+![Create Initiative](Screenshots/Initiatives/Organization/create-initiative.jpg)  
 
+**Fields:**  
+- Title  
+- Description  
+- Date from  
+- Date to  
+- Time  
+- City  
+- Location  
+- Category  
+- Tags  
+- Max participants (optional)  
+- Contact  
+- Attach files  
+- Moderator/Admin settings – can add if logged-in user is admin  
+
+**Buttons:**  
+- Create Initiative  
+- Clear  
+- Back  
+
+**Validations:**  
+- Required fields  
+- Date to ≥ Date from  
+
+---
+
+### 4.2.5 Screen: Edit Initiative
+![Edit Initiative](Screenshots/Initiatives/Organization/edit-initiative.jpg)  
+
+Accessible to: organizations (only own initiatives)
+
+**Buttons:**  
+- Save Changes  
+- Delete Initiative (admin only)  
+- Back  
+
+When deleted, the group is archived and read-only.
+
+---
+
+## 4.3 Module: Groups
+
+Groups are the main communication space. When an initiative is created, its group is automatically created.
+
+### Role-based permissions:
+- **Administrator:** full rights  
+- **Moderator:** limited admin rights  
+- **Volunteer:** posts require approval  
+
+---
+
+### 4.3.1 Group Feed (Wall)
+![Group Feed](Screenshots/Groups/group-feed.jpg)  
+
+Includes:  
+- Posts  
+- Comments  
+- Likes  
+- Attachments  
+
+---
+
+### 4.3.2 Group Chat
+
+The group chat provides fast and direct communication among all initiative members. It can be accessed via the group sidebar in a compact view.  
+![Sidebar Chat](Screenshots/Groups/chat-sidebar.jpg)  
+
+It can be expanded via a modal window.  
+![Chat Modal](Screenshots/Groups/chat-big.jpg)  
+
+#### Functionality
+- Send/receive text messages among all group members  
+- Display sender information for each message:  
+  - User name  
+  - Role within the initiative (admin/moderator/volunteer)  
+- Show system-generated messages  
+
+#### System messages – examples
+- "Iva Stoyanova joined the group"  
+- "Petar Ivanov left the initiative"  
+- "The initiative was archived"  
+
+#### Access rights
+- Administrator: can read and send messages  
+- Moderator: can read and send messages  
+- Member: can read and send messages  
+- Volunteer: can read and send messages  
+
+#### Notes
+- The role displayed for a message is the user's role within the initiative  
+- First version does NOT support:  
+  - Editing chat messages  
+  - Deleting chat messages  
+  - Attaching files in chat  
+
+---
+
+## 4.4 Module: Organizations
+![Organization Profile](Screenshots/Profile/Organization/our-profile.jpg)  
+
+### Screen: Organization Profile
+
+Must include:  
+- Organization Name  
+- Logo  
+- Description  
+- Active Initiatives  
+- Team  
+
+**Buttons:**  
+- [Add Initiative](#424-screen-create-initiative)  
+- Invite Member (opens modal to enter new member's email – admin role required)  
+- Generate Report (participation/activity report)  
+- Delete Organization (admin only)  
+
+---
+
+## 4.5 Module: User Profile
+![User Profile](Screenshots/Profile/Volunteer/my-profile.jpg)  
+
+### Screen: My Profile
+
+- Name  
+- Email  
+- Change Password  
+- Signed-up Initiatives  
+- Groups  
+
+---
+
+## 4.6 Module: Notifications
+![Notifications](Screenshots/notifications.jpg)  
+
+### Bell
+- Badge showing number of unread notifications  
+- Dropdown with latest notifications  
+
+### Examples:
+- "New post in group"  
+- "New message in chat"  
+- "Successfully signed up for initiative"  
+- "Reminder for upcoming initiative"  
+
+---
