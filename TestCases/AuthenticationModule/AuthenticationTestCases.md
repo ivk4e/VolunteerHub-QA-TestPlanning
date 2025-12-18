@@ -33,7 +33,7 @@
 - The user is redirected to the all initiatives page.
 - Volunteer navigation menu is displayed.
 
---
+---
 
 - TC-AUTH-002: Volunteer login with invalid credentials
 
@@ -65,7 +65,7 @@
 - The user remains on the login page.
 - An error message appears - "Невалидни данни за вход."
 
---
+---
 
 - TC-AUTH-003: Volunteer login with "Влизам като организация" checkbox selected
 
@@ -95,7 +95,7 @@
 - The user remains on the login page.
 - An error message appears - "Невалидни данни за вход."
 
---
+---
 
 ## Test Scenario: AUTH-SC-02: Organization login
 
@@ -130,7 +130,7 @@
 - The organization is redirected to the all initiatives page.
 - Organization navigation menu is displayed.
 
---
+---
 
 - TC-AUTH-005: Organization login with invalid credentials (and wrong checkbox)
 
@@ -161,7 +161,7 @@
 - An error message is displayed: "Невалидни данни за вход."
 - Organization navigation menu is NOT visible.
 
---
+---
 
 ## Test Scenario: AUTH-SC-03: Volunteer registration
 
@@ -200,7 +200,7 @@
 - A success message is displayed - "Регистрацията е успешна".
 - The volunteer can now log in using the registered email and password.
 
---
+---
 
 - TC-AUTH-007: Volunteer registration with invalid or missing data
 
@@ -235,7 +235,7 @@
     - Mismatched passwords - "Паролите не съвпадат"
     - Already registered email - "Имейлът вече е регистриран"
 
---
+---
 
 ## Test Scenario: AUTH-SC-04: Organization registration
 
@@ -291,7 +291,7 @@
 - A success message is displayed: "Регистрацията е успешна".
 - The organization can now log in using the registered email and password.
 
---
+---
 
 - TC-AUTH-008: Organization registration with invalid or missing data
 
@@ -362,7 +362,7 @@
     - Invalid location - "Локацията трябва да е в България"
     - Missing contact person data - "Попълнете данните на администратор"
 
---
+---
 
 ## Test Scenario: AUTH-SC-05: Forgot password
 
@@ -393,7 +393,7 @@
 - The user can now log in with the new password.
 - The old password is no longer valid for login.
 
---
+---
 
 - TC-AUTH-010: Forgot password with valid registered email
 
@@ -416,7 +416,7 @@
 - A confirmation message is displayed: "Инструкции за смяна на парола бяха изпратени на имейлът ви."
 - The user can proceed to reset the password via the link.
 
---
+---
 
 TC-AUTH-011: Forgot password (negative scenarios)
 
@@ -448,7 +448,7 @@ TC-AUTH-011: Forgot password (negative scenarios)
   - User remains on the forgot password page.
   - Error message: "Невалиден имейл."
 
---
+---
 
 TC-AUTH-012: Expired link
 
@@ -475,6 +475,7 @@ TC-AUTH-012: Expired link
   - User cannot reset the password.
   - An error message is displayed: "Линкът за смяна на парола е изтекъл."
 
+---
 
 TC-AUTH-013: Mismatched passwords
 
@@ -501,4 +502,4 @@ TC-AUTH-013: Mismatched passwords
   - User cannot reset the password.
   - An error message is displayed: "Паролите не съвпадат."
 
---
+---
