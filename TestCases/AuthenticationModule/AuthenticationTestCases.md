@@ -6,7 +6,7 @@
 
 - TC-AUTH-001: Successful volunteer login
 
-**Preconditions: **
+**Preconditions:**
 - The user should be registered as a volunteer
 - The user is on the login page
 
@@ -37,7 +37,7 @@
 
 - TC-AUTH-002: Volunteer login with invalid credentials
 
-**Preconditions: **
+**Preconditions:**
 - The user should be on the login page
 
 **Test Data:**
@@ -69,7 +69,7 @@
 
 - TC-AUTH-003: Volunteer login with "Влизам като организация" checkbox selected
 
-**Preconditions: **
+**Preconditions:**
 - The user should be on the login page
 
 **Test Data:**
@@ -103,7 +103,7 @@
 
 - TC-AUTH-004: Successful organization login
 
-**Preconditions: **
+**Preconditions:**
 - The organization should be registered
 - The user is on the login page
 
